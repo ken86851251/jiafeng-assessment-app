@@ -46,54 +46,56 @@ const initialState = {
     hasDialysis: false
   },
   physicalBody: {
-    mentalFunction: {
-      consciousness: [],
-      emotionalExpression: [],
-      behaviorExpression: []
-    },
-    sensoryFunction: {
-      oralCondition: []
-    },
-    mobilityAbility: {
-      assistiveDevices: []
-    },
-    skinCondition: {
-      skinProblems: [],
-      skinPhotos: []
-    }
+physicalBody: {
+  mentalFunction: {
+    consciousness: [],
+    cognitiveStatus: '',
+    memoryStatus: 'normal' as 'normal' | 'short_term_poor',
+    communicationAbility: '',
+    emotionalExpression: [],
+    behaviorExpression: []
   },
-  socialFamily: {
-    assistiveDevices: [],
-    intensiveVisitNeeds: [],
-    environmentPhotos: []
+  sensoryFunction: {
+    vision: '',
+    hearing: '',
+    smell: '',
+    oralCondition: []
   },
-  carePlan: {
-    careProblems: {
-      selectedProblems: [],
-      autoSuggested: []
-    }
+  nutritionDiet: {
+    dietType: '',
+    eatingCondition: ''
   },
-  completionSignature: {
-    riskAlerts: []
+  muscleStrength: {
+    rightUpperLimb: 5,
+    leftUpperLimb: 5,
+    rightLowerLimb: 5,
+    leftLowerLimb: 5
+  },
+  mobilityAbility: {
+    standingPosture: '',
+    sittingPosture: '',
+    transferAbility: '',
+    walkingAbility: '',
+    fallFrequency: '',
+    assistiveDevices: []
+  },
+  excretoryFunction: {
+    bowelMovement: '',
+    urination: ''
+  },
+  skinCondition: {
+    skinProblems: [],
+    pressureInjury: '',
+    skinPhotos: []
+  },
+  otherAssessments: {
+    diseaseCondition: '',
+    painCondition: '',
+    sleepCondition: '',
+    otherTubes: '',
+    hygieneBathing: ''
   }
-};
-
-export const useAssessmentStore = create<AssessmentState>((set, get) => ({
-  ...initialState,
-  
-  setCurrentAssessment: (assessment) => set({ currentAssessment: assessment }),
-  
-  setCurrentStep: (step) => set({ currentStep: step }),
-  
-  updateBasicInfo: (data) => set((state) => ({
-    basicInfo: { ...state.basicInfo, ...data }
-  })),
-  
-  updateHealthMedical: (data) => set((state) => ({
-    healthMedical: { ...state.healthMedical, ...data }
-  })),
-  
-  updatePhysicalBody: (data) => set((state) => ({
+},
     physicalBody: { ...state.physicalBody, ...data }
   })),
   
@@ -188,4 +190,5 @@ export const useAssessmentStore = create<AssessmentState>((set, get) => ({
     
     return alerts;
   }
+
 }));
