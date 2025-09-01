@@ -46,56 +46,87 @@ const initialState = {
     hasDialysis: false
   },
   physicalBody: {
-physicalBody: {
-  mentalFunction: {
-    consciousness: [],
-    cognitiveStatus: '',
-    memoryStatus: 'normal' as 'normal' | 'short_term_poor',
-    communicationAbility: '',
-    emotionalExpression: [],
-    behaviorExpression: []
+    mentalFunction: {
+      consciousness: [],
+      cognitiveStatus: '',
+      memoryStatus: 'normal' as 'normal' | 'short_term_poor',
+      communicationAbility: '',
+      emotionalExpression: [],
+      behaviorExpression: []
+    },
+    sensoryFunction: {
+      vision: '',
+      hearing: '',
+      smell: '',
+      oralCondition: []
+    },
+    nutritionDiet: {
+      dietType: '',
+      eatingCondition: ''
+    },
+    muscleStrength: {
+      rightUpperLimb: 5,
+      leftUpperLimb: 5,
+      rightLowerLimb: 5,
+      leftLowerLimb: 5
+    },
+    mobilityAbility: {
+      standingPosture: '',
+      sittingPosture: '',
+      transferAbility: '',
+      walkingAbility: '',
+      fallFrequency: '',
+      assistiveDevices: []
+    },
+    excretoryFunction: {
+      bowelMovement: '',
+      urination: ''
+    },
+    skinCondition: {
+      skinProblems: [],
+      pressureInjury: '',
+      skinPhotos: []
+    },
+    otherAssessments: {
+      diseaseCondition: '',
+      painCondition: '',
+      sleepCondition: '',
+      otherTubes: '',
+      hygieneBathing: ''
+    }
   },
-  sensoryFunction: {
-    vision: '',
-    hearing: '',
-    smell: '',
-    oralCondition: []
+  socialFamily: {
+    assistiveDevices: [],
+    intensiveVisitNeeds: [],
+    environmentPhotos: []
   },
-  nutritionDiet: {
-    dietType: '',
-    eatingCondition: ''
+  carePlan: {
+    careProblems: {
+      selectedProblems: [],
+      autoSuggested: []
+    }
   },
-  muscleStrength: {
-    rightUpperLimb: 5,
-    leftUpperLimb: 5,
-    rightLowerLimb: 5,
-    leftLowerLimb: 5
-  },
-  mobilityAbility: {
-    standingPosture: '',
-    sittingPosture: '',
-    transferAbility: '',
-    walkingAbility: '',
-    fallFrequency: '',
-    assistiveDevices: []
-  },
-  excretoryFunction: {
-    bowelMovement: '',
-    urination: ''
-  },
-  skinCondition: {
-    skinProblems: [],
-    pressureInjury: '',
-    skinPhotos: []
-  },
-  otherAssessments: {
-    diseaseCondition: '',
-    painCondition: '',
-    sleepCondition: '',
-    otherTubes: '',
-    hygieneBathing: ''
+  completionSignature: {
+    riskAlerts: []
   }
-},
+};
+
+export const useAssessmentStore = create<AssessmentState>((set, get) => ({
+  ...initialState,
+  
+  setCurrentAssessment: (assessment) => set({ currentAssessment: assessment }),
+  
+  setCurrentStep: (step) => set({ currentStep: step }),
+  
+  updateBasicInfo: (data) => set((state) => ({
+    basicInfo: { ...state.basicInfo, ...data }
+  })),
+  
+  updateHealthMedical: (data) => set((state) => ({
+    healthMedical: { ...state.healthMedical, ...data }
+  })),
+  
+  updatePhysicalBody: (data) => set((state) => ({
     physicalBody: { ...state.physicalBody, ...data }
   })),
   
@@ -190,5 +221,4 @@ physicalBody: {
     
     return alerts;
   }
-
 }));
